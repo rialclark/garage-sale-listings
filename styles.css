@@ -229,4 +229,30 @@ details p{color:var(--muted);margin:0 0 20px}
   .hero-art{min-height:120px;overflow:hidden}
   .hero-art img{width:180%;max-width:none;margin-left:-40%}
 }
+
+/* Phone contact */
+.btn-call{background:var(--ice);color:var(--navy)!important;border-color:var(--line);padding:9px 16px!important;font-size:.95rem}
+.btn-call:hover{background:#fff;border-color:var(--accent)}
+.btn-call .icon{width:17px;height:17px;color:var(--accent)}
+.btn-sm{padding:10px 18px;font-size:.93rem}
+.btn-soft{background:var(--accent-soft);color:var(--accent-dark)}
+.btn-soft:hover{background:var(--accent);color:#fff}
+.talk{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.talk-title{font-weight:800;color:var(--navy);margin:2px 0 12px;line-height:1.4}
+.talk-actions{display:flex;gap:10px;flex-wrap:wrap}
+.footer-phone{display:flex;gap:10px;align-items:center}
+.footer-phone .icon{width:18px;height:18px;color:#7fd6ad}
+.footer-phone a{font-weight:700}
+.nowrap{white-space:nowrap}
+.call-short{display:none}
+@media (max-width:720px){.btn-call .call-short{display:inline}}
+@media (max-width:460px){.nav .nav-cta{display:none}}
+@media (max-width:720px){
+  .btn-call{padding:9px 14px!important;gap:6px}
+  .btn-call .call-num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .btn-call .icon{width:18px;height:18px}
+  .nav{gap:8px}
+  .brand{min-width:0}
+  .brand span{overflow:hidden;text-overflow:ellipsis}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

@@ -5,15 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Garage Sale Listings | Run one community garage sale, meet every future seller on the street</title>
 <meta name="description" content="A complete community garage sale playbook for real estate agents, and done for you neighborhood sales for HOAs in San Diego North County.">
+<meta name="theme-color" content="#173a4f">
+<link rel="preload" href="fonts/baloo2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunitosans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23c8553d'/><path d='M14 34 32 18l18 16v14H14z' fill='%23fff8ef'/><rect x='26' y='36' width='12' height='12' fill='%23c8553d'/></svg>">
+<link rel="icon" href="assets/mark-agents.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="theme-agents">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+    <symbol id="i-sign" viewBox="0 0 24 24"><path d="M12 13v9M12 2v2"/><path d="M5 4h12l3 4.5-3 4.5H5z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 16-6v14L3 13z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-5.9-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/></symbol>
+  </defs>
+</svg>
 
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="brand" href="#top" aria-label="Garage Sale Listings home">
-      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#c8553d"/><path d="M14 34 32 18l18 16v14H14z" fill="#fff8ef"/><rect x="26" y="36" width="12" height="12" fill="#c8553d"/></svg>
+      <img class="brand-mark" src="assets/mark-agents.svg" alt="" width="38" height="38">
       <span>Garage Sale Listings</span>
     </a>
     <nav class="nav" aria-label="Main">
@@ -21,6 +48,7 @@
       <a href="#hoa">For HOAs</a>
       <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="#agents">See the kit</a>
     </nav>
   </div>
 </header>
@@ -28,27 +56,40 @@
 <main id="top">
 
   <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Community garage sales, planned start to finish</p>
-      <h1>Run One Garage Sale. Meet Every Future Seller on the Street.</h1>
-      <p class="lede">One Saturday, a whole neighborhood selling at once, and a real reason to meet the people who live there. Pick the path that fits you.</p>
-
-      <div class="paths">
-        <a class="path path-agent" href="#agents">
-          <span class="path-tag">Real estate agents</span>
-          <strong>Get the full playbook</strong>
-          <span>The timeline, sign up form, map, flyers, signs, and follow up scripts. $99.</span>
-          <span class="path-go">See the kit</span>
-        </a>
-        <a class="path path-hoa" href="#hoa">
-          <span class="path-tag">HOAs and neighborhood groups</span>
-          <strong>Have your sale run for you</strong>
-          <span>Signups, the map, signs, flyers, and promotion handled in San Diego North County.</span>
-          <span class="path-go">Request a sale</span>
-        </a>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Community garage sales, planned start to finish</p>
+        <h1>Run One Garage Sale. Meet Every Future Seller on the Street.</h1>
+        <p class="lede">One Saturday, a whole neighborhood selling at once, and a real reason to meet the people who live there. Pick the path that fits you.</p>
       </div>
-      <p class="path-more small">HOA board or neighborhood group? There's a separate page just for you at <a href="https://communitysalehelp.com">communitysalehelp.com</a>.</p>
+
+      <div class="hero-card">
+        <h2>Which one are you?</h2>
+        <p class="sub">Two ways to bring a community sale to a neighborhood.</p>
+        <div class="paths">
+          <a class="path path-agent" href="#agents">
+            <span class="tile tile-orange"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg></span>
+            <span class="path-body">
+              <span class="path-tag">Real estate agents</span>
+              <strong>Get the full playbook</strong>
+              <span>The timeline, sign up form, map, flyers, signs, and follow up scripts. $99.</span>
+              <span class="path-go">See the kit <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </span>
+          </a>
+          <a class="path path-hoa" href="#hoa">
+            <span class="tile tile-green"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+            <span class="path-body">
+              <span class="path-tag">HOAs and neighborhood groups</span>
+              <strong>Have your sale run for you</strong>
+              <span>Signups, the map, signs, flyers, and promotion handled in San Diego North County.</span>
+              <span class="path-go">Request a sale <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <p class="path-more foot"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>HOA board or neighborhood group? There's a separate page just for you at <a href="https://communitysalehelp.com">communitysalehelp.com</a>.</span></p>
+      </div>
     </div>
+    <div class="hero-art"><img src="assets/street.svg" alt="Illustration of a neighborhood street with open garages, sale tables, and map pins above the homes" width="1440" height="380"></div>
   </section>
 
   <section id="agents" class="section">
@@ -56,64 +97,68 @@
       <div>
         <p class="eyebrow">For real estate agents</p>
         <h2>The complete community garage sale kit</h2>
+        <span class="bar"></span>
         <p>The complete playbook for real estate agents: the timeline, the sign up form, the map, the flyers, the signs, and the exact scripts that turn a Saturday event into listing conversations.</p>
         <p>Every homeowner who signs up gives you a name, an address, and an email. You meet them at their own front door on sale day. The follow up scripts help you turn that into a real conversation later.</p>
-
-        <h3>What's inside</h3>
-        <ul class="checks">
-          <li>An 8 week timeline, week by week</li>
-          <li>A homeowner sign up form you can copy and make your own</li>
-          <li>A Google My Maps setup guide plus a printable map</li>
-          <li>Flyer and sign templates with Canva specs</li>
-          <li>A where to post and when schedule</li>
-          <li>Homeowner follow up scripts</li>
-        </ul>
       </div>
 
-      <aside class="buy-card" aria-label="Buy the kit">
+      <aside class="card buy-card" aria-label="Buy the kit">
+        <span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span>
         <p class="price"><span class="currency">$</span>99</p>
         <p class="price-note">One time. Everything is editable.</p>
         <!-- PLACEHOLDER: replace #KIT_LINK with the Gumroad product URL for the $99 kit -->
-        <a class="btn btn-primary" href="#KIT_LINK" data-placeholder="KIT_LINK">Get the kit</a>
+        <a class="btn btn-primary btn-block" href="#KIT_LINK" data-placeholder="KIT_LINK">Get the kit</a>
         <p class="small">You can run your first sale about 8 weeks after you start.</p>
       </aside>
     </div>
 
     <div class="wrap">
-      <div class="guide">
+      <h3 style="margin-top:64px;margin-bottom:22px">What's inside</h3>
+      <div class="grid-3">
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span><h3>An 8 week timeline, week by week</h3></div>
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg></span><h3>A homeowner sign up form you can copy and make your own</h3></div>
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-map"/></svg></span><h3>A Google My Maps setup guide plus a printable map</h3></div>
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-sign"/></svg></span><h3>Flyer and sign templates with Canva specs</h3></div>
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg></span><h3>A where to post and when schedule</h3></div>
+        <div class="card feature"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span><h3>Homeowner follow up scripts</h3></div>
+      </div>
+
+      <div class="band guide">
+        <span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
         <div class="guide-text">
           <p class="eyebrow">Free guide</p>
           <h3>Be the Agent They Already Know: 10 Organic Ways to Win Listings in Your Farm, Ranked</h3>
           <p>Ten ways to get known in your farm area without paid ads, each scored on the same five categories. Where a number is an estimate, the guide says so.</p>
         </div>
         <!-- PLACEHOLDER: replace #GUIDE_LINK with the Gumroad URL for the free guide ($0 product) -->
-        <a class="btn btn-ghost" href="#GUIDE_LINK" data-placeholder="GUIDE_LINK">Get the free guide</a>
+        <a class="btn btn-light" href="#GUIDE_LINK" data-placeholder="GUIDE_LINK"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the free guide</a>
       </div>
     </div>
   </section>
 
-  <section id="hoa" class="section section-warm">
+  <section id="hoa" class="section section-ice">
     <div class="wrap two-col">
       <div>
         <p class="eyebrow">For HOAs and neighborhood groups</p>
         <h2>A community garage sale, done for you</h2>
+        <span class="bar"></span>
         <p>Your neighbors want a community sale. Nobody on the board wants to run it. I'm Clark Richardson, based in Oceanside, and I'll plan and run it with you.</p>
 
-        <h3>What I handle</h3>
+        <h3 style="margin:30px 0 16px">What I handle</h3>
         <ul class="checks">
-          <li>Homeowner signups through a simple online form</li>
-          <li>A shared map of every participating home</li>
-          <li>Yard signs for the neighborhood entrances and corners</li>
-          <li>Flyers for residents and for shoppers</li>
-          <li>Promotion in the places local shoppers already look</li>
+          <li><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Homeowner signups through a simple online form</li>
+          <li><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>A shared map of every participating home</li>
+          <li><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Yard signs for the neighborhood entrances and corners</li>
+          <li><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Flyers for residents and for shoppers</li>
+          <li><span class="dot"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Promotion in the places local shoppers already look</li>
         </ul>
 
         <p>More details for HOAs and neighborhood groups are at <a href="https://communitysalehelp.com">communitysalehelp.com</a>.</p>
 
-        <p class="area"><strong>Service area:</strong> San Diego North County, including Oceanside, Vista, Carlsbad, and nearby communities.</p>
+        <div class="area"><span class="tile tile-green"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><p><strong>Service area:</strong> San Diego North County, including Oceanside, Vista, Carlsbad, and nearby communities.</p></div>
       </div>
 
-      <div class="form-card">
+      <div class="card form-card">
         <h3>Request a community sale</h3>
         <p class="small">Tell me a little about your neighborhood and I'll get back to you.</p>
         <!-- PLACEHOLDER: replace #HOA_FORM_ACTION with a real endpoint (Formspree URL, or swap this form for a Google Form link). -->
@@ -145,7 +190,7 @@
               </select>
             </label>
           </div>
-          <button class="btn btn-primary" type="submit">Send request</button>
+          <button class="btn btn-primary btn-block" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg> Send request</button>
           <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -154,38 +199,44 @@
 
   <section id="how" class="section">
     <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <h2>One Saturday, planned over about 8 weeks</h2>
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>One Saturday, planned over about 8 weeks</h2>
+        <span class="bar"></span>
+      </div>
       <div class="steps">
-        <div class="step">
-          <span class="num">1</span>
+        <div class="card step">
+          <div class="step-top"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span><span class="num">01</span></div>
           <h3>Pick a date and a neighborhood</h3>
           <p>Choose a Saturday about 8 weeks out and the streets you want to include.</p>
         </div>
-        <div class="step">
-          <span class="num">2</span>
+        <div class="card step">
+          <div class="step-top"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg></span><span class="num">02</span></div>
           <h3>Sign up the homes</h3>
           <p>Flyers and posts point neighbors to a short sign up form. Each signup goes on the map.</p>
         </div>
-        <div class="step">
-          <span class="num">3</span>
+        <div class="card step">
+          <div class="step-top"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span class="num">03</span></div>
           <h3>Promote the sale</h3>
           <p>Signs go up, the map gets shared, and shoppers know where to go on the day.</p>
         </div>
-        <div class="step">
-          <span class="num">4</span>
+        <div class="card step">
+          <div class="step-top"><span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span><span class="num">04</span></div>
           <h3>Sale day and follow up</h3>
           <p>Walk the neighborhood, meet people at their driveways, and follow up afterward with a simple thank you.</p>
         </div>
       </div>
-      <p class="note">Agents run these steps themselves with the kit. For HOAs in North County, I run them for you.</p>
+      <p class="note"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Agents run these steps themselves with the kit. For HOAs in North County, I run them for you.</span></p>
     </div>
   </section>
 
-  <section id="faq" class="section section-warm">
+  <section id="faq" class="section section-ice">
     <div class="wrap narrow">
-      <p class="eyebrow">Questions</p>
-      <h2>FAQ</h2>
+      <div class="section-head center" style="margin-left:auto;margin-right:auto">
+        <p class="eyebrow">Questions</p>
+        <h2>FAQ</h2>
+        <span class="bar"></span>
+      </div>
 
       <details>
         <summary>Is this a site for finding garage sales near me?</summary>
@@ -219,16 +270,25 @@
 <footer class="footer">
   <div class="wrap footer-inner">
     <div>
-      <p class="brand brand-footer">Garage Sale Listings</p>
+      <p class="brand"><img class="brand-mark" src="assets/mark-agents.svg" alt="" width="38" height="38"><span>Garage Sale Listings</span></p>
       <p class="small">Run one community garage sale, meet every future seller on the street.</p>
       <p class="small">Clark Richardson, Oceanside, California</p>
     </div>
-    <nav class="footer-nav" aria-label="Footer">
-      <a href="#agents">For agents</a>
-      <a href="#hoa">For HOAs</a>
-      <a href="#how">How it works</a>
-      <a href="#faq">FAQ</a>
-    </nav>
+    <div>
+      <h4>On this page</h4>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#agents">For agents</a>
+        <a href="#hoa">For HOAs</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div>
+      <h4>For HOAs</h4>
+      <nav class="footer-nav" aria-label="HOA site">
+        <a href="https://communitysalehelp.com">communitysalehelp.com</a>
+      </nav>
+    </div>
   </div>
   <div class="wrap"><p class="small copy">&copy; 2026 Garage Sale Listings</p></div>
 </footer>
@@ -238,7 +298,7 @@
 (function () {
   var status = document.getElementById('form-status');
   var form = document.getElementById('hoa-form');
-  form.addEventListener('submit', function (e) {
+  if (form) form.addEventListener('submit', function (e) {
     if (form.getAttribute('action').indexOf('#') === 0) {
       e.preventDefault();
       status.textContent = 'Thanks. This form is not connected yet, so nothing was sent. Please check back soon.';

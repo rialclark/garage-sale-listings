@@ -1,0 +1,2 @@
+Fonts: Baloo 2 and Nunito Sans, SIL Open Font License 1.1 (see fonts/OFL files).
+Illustrations and icons in assets/ and inline are original artwork made for this site.

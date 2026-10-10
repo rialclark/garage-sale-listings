@@ -172,8 +172,21 @@
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_source" value="garagesaleagents.com">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row">
+            <label>I am a
+              <select name="role" required>
+                <option value="Real estate agent" selected>Real estate agent</option>
+                <option value="HOA">HOA or community board</option>
+                <option value="Neighbor or resident">Neighbor or resident</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>Company
+              <input type="text" name="company" placeholder="Brokerage, HOA, or organization name" autocomplete="organization">
+            </label>
+          </div>
           <label>HOA or community name
-            <input type="text" name="community" required autocomplete="organization">
+            <input type="text" name="community" required>
           </label>
           <label>Your name
             <input type="text" name="name" required autocomplete="name">
@@ -347,6 +360,7 @@
     if (data._honey) { form.reset(); status.className = 'form-status ok'; status.textContent = 'Thanks. Your request is in.'; return; }
     delete data._honey;
     data._replyto = data.email;
+    data._subject = 'New request: ' + (data.role || 'Other') + ' (' + (data._source || location.hostname) + ')';
     button.disabled = true;
     var label = button.innerHTML;
     button.textContent = 'Sending...';

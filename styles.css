@@ -162,6 +162,11 @@ form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmln
 form input:focus,form select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);background:#fff}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-status{margin:14px 0 0;font-weight:700;color:var(--green)}
+.form-status:empty{display:none}
+.form-status.ok{background:var(--green-soft);color:var(--green-dark);padding:12px 16px;border-radius:12px}
+.form-status.err{background:var(--orange-soft);color:var(--orange-dark);padding:12px 16px;border-radius:12px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+button[disabled]{opacity:.7;cursor:wait}
 .form-note{display:flex;gap:8px;align-items:center;justify-content:center;margin:14px 0 0;color:var(--muted);font-size:.88rem}
 .form-note .icon{width:16px;height:16px}
 

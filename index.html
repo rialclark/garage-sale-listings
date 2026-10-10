@@ -165,8 +165,13 @@
       <div class="card form-card">
         <h3>Request a community sale</h3>
         <p class="small">Tell me a little about your neighborhood and I'll get back to you.</p>
-        <!-- PLACEHOLDER: replace #HOA_FORM_ACTION with a real endpoint (Formspree URL, or swap this form for a Google Form link). -->
-        <form id="hoa-form" action="#HOA_FORM_ACTION" method="POST">
+        <!-- Submissions go to hello@deklutternow.com via FormSubmit. JS posts JSON to the /ajax/ endpoint; without JS the browser posts to the regular endpoint. -->
+        <form id="hoa-form" action="https://formsubmit.co/hello@deklutternow.com" data-ajax="https://formsubmit.co/ajax/hello@deklutternow.com" method="POST">
+          <input type="hidden" name="_subject" value="New community sale request (garagesaleagents.com)">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_source" value="garagesaleagents.com">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>HOA or community name
             <input type="text" name="community" required autocomplete="organization">
           </label>
@@ -179,6 +184,14 @@
           <label>Phone
             <input type="tel" name="phone" autocomplete="tel">
           </label>
+          <div class="row">
+            <label>City
+              <input type="text" name="city" required autocomplete="address-level2">
+            </label>
+            <label>State
+              <input type="text" name="state" required autocomplete="address-level1">
+            </label>
+          </div>
           <div class="row">
             <label>About how many homes
               <input type="number" name="homes" min="1" inputmode="numeric">
@@ -309,16 +322,8 @@
 </footer>
 
 <script>
-// Placeholder handling: while links and the form are not wired, explain instead of failing silently.
+// Placeholder links: explain instead of failing silently until the Gumroad URLs are added.
 (function () {
-  var status = document.getElementById('form-status');
-  var form = document.getElementById('hoa-form');
-  if (form) form.addEventListener('submit', function (e) {
-    if (form.getAttribute('action').indexOf('#') === 0) {
-      e.preventDefault();
-      status.textContent = 'Thanks. This form is not connected yet, so nothing was sent. Please check back soon.';
-    }
-  });
   document.querySelectorAll('a[data-placeholder]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       if (a.getAttribute('href').indexOf('#') === 0) {
@@ -326,6 +331,43 @@
         a.textContent = 'Coming soon';
       }
     });
+  });
+})();
+// HOA request form: send to FormSubmit by AJAX and show the result inline.
+(function () {
+  var form = document.getElementById('hoa-form');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  var button = form.querySelector('button[type="submit"]');
+  var FAIL = 'Sorry, that did not go through. Please call or text (602) 767-0428 and I will take it from there.';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
+    if (data._honey) { form.reset(); status.className = 'form-status ok'; status.textContent = 'Thanks. Your request is in.'; return; }
+    delete data._honey;
+    data._replyto = data.email;
+    button.disabled = true;
+    var label = button.innerHTML;
+    button.textContent = 'Sending...';
+    status.className = 'form-status'; status.textContent = '';
+    fetch(form.getAttribute('data-ajax'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (res) {
+      var s = res.j && res.j.success;
+      if (res.ok && (s === true || s === 'true')) {
+        form.reset();
+        status.className = 'form-status ok';
+        status.textContent = 'Thanks. Your request is in, and I will get back to you soon.';
+      } else { throw new Error('failed'); }
+    }).catch(function () {
+      status.className = 'form-status err';
+      status.textContent = FAIL;
+    }).then(function () { button.disabled = false; button.innerHTML = label; });
   });
 })();
 </script>

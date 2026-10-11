@@ -293,3 +293,5 @@ html.modal-open{overflow:hidden}
   .modal-head h2{font-size:1.35rem}
 }
 @media (prefers-reduced-motion:reduce){.modal-inner{animation:none}}
+.done-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.wl-done .small{max-width:380px;margin:0 auto}

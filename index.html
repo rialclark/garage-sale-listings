@@ -208,12 +208,12 @@
         <p>Every homeowner who signs up gives you a name, an address, and an email. You meet them at their own front door on sale day. The follow up scripts help you turn that into a real conversation later.</p>
       </div>
 
-      <aside class="card buy-card" aria-label="Buy the kit">
+      <aside id="kit" class="card buy-card" aria-label="Buy the kit">
         <span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span>
         <p class="price"><span class="currency">$</span>99</p>
         <p class="price-note">One time. Everything is editable.</p>
         <!-- WAITLIST: when the Gumroad kit page is live, swap this button for <a class="btn btn-primary btn-block" href="GUMROAD_KIT_URL">Get the kit</a> -->
-        <button type="button" class="btn btn-primary btn-block" data-waitlist="kit" aria-haspopup="dialog">Get the kit</button>
+        <button type="button" class="btn btn-primary btn-block" data-open="waitlist" aria-haspopup="dialog">Get the kit</button>
         <p class="waitlist-hint"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Not on sale yet. Join the waitlist and I'll email you when it's ready.</p>
         <p class="small">You can run your first sale about 8 weeks after you start.</p>
       </aside>
@@ -237,10 +237,9 @@
           <h3>Be the Agent They Already Know: 10 Organic Ways to Win Listings in Your Farm, Ranked</h3>
           <p>Ten ways to get known in your farm area without paid ads, each scored on the same five categories. Where a number is an estimate, the guide says so.</p>
         </div>
-        <!-- WAITLIST: when the Gumroad guide page is live, swap this button for <a class="btn btn-light" href="GUMROAD_GUIDE_URL">Get the free guide</a> -->
         <div class="guide-cta">
-          <button type="button" class="btn btn-light" data-waitlist="guide" aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the free guide</button>
-          <p class="waitlist-hint light">Coming soon. Join the waitlist to get it first.</p>
+          <button type="button" class="btn btn-light" data-open="guide-modal" aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the free guide</button>
+          <p class="waitlist-hint light">Free PDF. Download it right after you enter your email.</p>
         </div>
       </div>
     </div>
@@ -449,7 +448,7 @@
       </div>
     </div>
     <p id="wl-desc" class="modal-desc">The $99 kit isn't on sale yet. Leave your details and I'll email you as soon as it's ready.</p>
-    <form id="waitlist-form" action="https://formsubmit.co/hello@deklutternow.com" data-ajax="https://formsubmit.co/ajax/hello@deklutternow.com" method="POST" novalidate>
+    <form id="waitlist-form" class="js-modal-form" action="https://formsubmit.co/hello@deklutternow.com" data-ajax="https://formsubmit.co/ajax/hello@deklutternow.com" method="POST" novalidate>
       <input type="hidden" name="_subject" value="Waitlist: Kit $99 (garagesaleagents.com)">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -488,9 +487,9 @@
         </label>
       </div>
       <button class="btn btn-primary btn-block" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg> Join the waitlist</button>
-      <p class="form-status" id="wl-status" role="status" aria-live="polite"></p>
+      <p class="form-status" role="status" aria-live="polite"></p>
     </form>
-    <div class="wl-done" id="wl-done" hidden>
+    <div class="wl-done" hidden>
       <span class="tile tile-green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
       <p class="wl-done-msg">You're on the list. I'll email you as soon as it's ready.</p>
       <button type="button" class="btn btn-dark" data-close>Close</button>
@@ -498,98 +497,149 @@
   </div>
 </dialog>
 
+<dialog id="guide-modal" class="modal" aria-labelledby="gd-title" aria-describedby="gd-desc">
+  <div class="modal-inner">
+    <button type="button" class="modal-close" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    <div class="modal-head">
+      <span class="tile tile-green"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+      <div>
+        <p class="eyebrow">Free guide</p>
+        <h2 id="gd-title">Get the free guide</h2>
+      </div>
+    </div>
+    <p id="gd-desc" class="modal-desc">Be the Agent They Already Know: 10 Organic Ways to Win Listings in Your Farm, Ranked. Enter your name and email and the PDF is yours right away.</p>
+    <form id="guide-form" class="js-modal-form" action="https://formsubmit.co/hello@deklutternow.com" data-ajax="https://formsubmit.co/ajax/hello@deklutternow.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Free guide request (garagesaleagents.com)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_source" value="garagesaleagents.com">
+      <input type="hidden" name="product" value="Free guide">
+      <input type="hidden" name="_autoresponse" value="Thanks for grabbing the guide. Here it is: https://garagesaleagents.com/guide/be_the_agent_they_already_know.pdf Tactic 1 is the community garage sale. If it clicks, reply here and I'll let you know when the full kit is ready. Clark Richardson, (602) 767-0428">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row">
+        <label>Name
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+      </div>
+      <div class="row">
+        <label>I am a
+          <select name="role">
+            <option value="Real estate agent" selected>Real estate agent</option>
+            <option value="Team leader or broker">Team leader or broker</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>Company or brokerage
+          <input type="text" name="company" autocomplete="organization">
+        </label>
+      </div>
+      <div class="row">
+        <label>City
+          <input type="text" name="city" autocomplete="address-level2">
+        </label>
+        <label>State
+          <input type="text" name="state" autocomplete="address-level1">
+        </label>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the guide</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <div class="wl-done" hidden>
+      <span class="tile tile-green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+      <p class="wl-done-msg">Thanks. Here's your guide.</p>
+      <p class="small">Tactic 1 is the community garage sale. If it clicks, the full kit is coming soon.</p>
+      <div class="done-actions">
+        <a class="btn btn-primary" href="guide/be_the_agent_they_already_know.pdf" download target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Download the PDF</a>
+        <button type="button" class="btn btn-dark" data-close>Close</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
 <script>
-// Waitlist modal for the kit and the free guide (not on sale yet).
+// Modals: kit waitlist and free guide. Native dialog, focus trap, Esc to close.
 (function () {
-  var dlg = document.getElementById('waitlist');
-  if (!dlg) return;
-  var form = document.getElementById('waitlist-form');
-  var status = document.getElementById('wl-status');
-  var done = document.getElementById('wl-done');
-  var title = document.getElementById('wl-title');
-  var desc = document.getElementById('wl-desc');
-  var button = form.querySelector('button[type="submit"]');
-  var SITE = 'garagesaleagents.com';
-  var FAIL = 'Sorry, that did not go through. Please call or text (602) 767-0428 and I will add you to the list.';
-  var PRODUCTS = {
-    kit: { name: 'Kit $99', title: 'Get notified when the kit is ready', desc: "The $99 kit isn't on sale yet. Leave your details and I'll email you as soon as it's ready." },
-    guide: { name: 'Free guide', title: "Get the free guide when it's ready", desc: "The free guide isn't available yet. Leave your details and I'll email it to you as soon as it's ready." }
-  };
+  var FAIL = 'Sorry, that did not go through. Please call or text (602) 767-0428 and I will take care of it.';
   var opener = null;
-  var supportsDialog = typeof dlg.showModal === 'function';
-  function focusables() {
+  function focusables(dlg) {
     return Array.prototype.filter.call(dlg.querySelectorAll('button, [href], input:not([type="hidden"]):not(.hp), select, textarea'), function (el) {
       return !el.disabled && el.offsetParent !== null;
     });
   }
-  function open(key, trigger) {
-    var p = PRODUCTS[key] || PRODUCTS.kit;
+  function open(dlg, trigger) {
     opener = trigger || document.activeElement;
-    title.textContent = p.title;
-    desc.textContent = p.desc;
-    form.elements.product.value = p.name;
-    form.elements._subject.value = 'Waitlist: ' + p.name + ' (' + SITE + ')';
-    form.hidden = false; done.hidden = true;
-    status.className = 'form-status'; status.textContent = '';
-    if (supportsDialog) { dlg.showModal(); } else { dlg.setAttribute('open', ''); dlg.classList.add('fallback'); }
+    var form = dlg.querySelector('form'), done = dlg.querySelector('.wl-done'), status = dlg.querySelector('.form-status');
+    form.hidden = false; done.hidden = true; status.className = 'form-status'; status.textContent = '';
+    if (typeof dlg.showModal === 'function') { dlg.showModal(); } else { dlg.setAttribute('open', ''); dlg.classList.add('fallback'); }
     document.documentElement.classList.add('modal-open');
     setTimeout(function () { form.elements.name.focus(); }, 30);
   }
-  function close() {
-    if (supportsDialog && dlg.open) { dlg.close(); } else { dlg.removeAttribute('open'); dlg.classList.remove('fallback'); onClosed(); }
+  function close(dlg) {
+    if (typeof dlg.close === 'function' && dlg.open) { dlg.close(); } else { dlg.removeAttribute('open'); dlg.classList.remove('fallback'); closed(); }
   }
-  function onClosed() {
+  function closed() {
     document.documentElement.classList.remove('modal-open');
     if (opener && opener.focus) opener.focus();
   }
-  dlg.addEventListener('close', onClosed);
-  document.querySelectorAll('[data-waitlist]').forEach(function (b) {
-    b.addEventListener('click', function () { open(b.getAttribute('data-waitlist'), b); });
+  document.querySelectorAll('[data-open]').forEach(function (b) {
+    var dlg = document.getElementById(b.getAttribute('data-open'));
+    if (dlg) b.addEventListener('click', function () { open(dlg, b); });
   });
-  dlg.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', close); });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
-  dlg.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-    if (e.key !== 'Tab') return;
-    var f = focusables(); if (!f.length) return;
-    var first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-  function showDone() {
-    form.reset(); form.hidden = true; done.hidden = false;
-    var c = done.querySelector('[data-close]'); if (c) c.focus();
-  }
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      status.className = 'form-status err';
-      status.textContent = 'Please add your name and a valid email.';
-      var bad = form.querySelector(':invalid'); if (bad) bad.focus();
-      return;
+  document.querySelectorAll('dialog.modal').forEach(function (dlg) {
+    dlg.addEventListener('close', closed);
+    dlg.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { close(dlg); }); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(dlg); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); close(dlg); return; }
+      if (e.key !== 'Tab') return;
+      var f = focusables(dlg); if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    var form = dlg.querySelector('form.js-modal-form');
+    if (!form) return;
+    var status = form.querySelector('.form-status');
+    var done = dlg.querySelector('.wl-done');
+    var button = form.querySelector('button[type="submit"]');
+    function showDone() {
+      form.reset(); form.hidden = true; done.hidden = false;
+      var c = done.querySelector('a, button'); if (c) c.focus();
     }
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
-    if (data._honey) { showDone(); return; }
-    delete data._honey;
-    data._replyto = data.email;
-    button.disabled = true;
-    var label = button.innerHTML;
-    button.textContent = 'Sending...';
-    status.className = 'form-status'; status.textContent = '';
-    fetch(form.getAttribute('data-ajax'), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) {
-      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
-    }).then(function (res) {
-      var s = res.j && res.j.success;
-      if (res.ok && (s === true || s === 'true')) { showDone(); } else { throw new Error('failed'); }
-    }).catch(function () {
-      status.className = 'form-status err';
-      status.textContent = FAIL;
-    }).then(function () { button.disabled = false; button.innerHTML = label; });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        status.className = 'form-status err';
+        status.textContent = 'Please add your name and a valid email.';
+        var bad = form.querySelector(':invalid'); if (bad) bad.focus();
+        return;
+      }
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = typeof v === 'string' ? v.trim() : v; });
+      if (data._honey) { showDone(); return; }
+      delete data._honey;
+      data._replyto = data.email;
+      button.disabled = true;
+      var label = button.innerHTML;
+      button.textContent = 'Sending...';
+      status.className = 'form-status'; status.textContent = '';
+      fetch(form.getAttribute('data-ajax'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+      }).then(function (res) {
+        var s = res.j && res.j.success;
+        if (res.ok && (s === true || s === 'true')) { showDone(); } else { throw new Error('failed'); }
+      }).catch(function () {
+        status.className = 'form-status err';
+        status.textContent = FAIL;
+      }).then(function () { button.disabled = false; button.innerHTML = label; });
+    });
   });
 })();
 // HOA request form: send to FormSubmit by AJAX and show the result inline.

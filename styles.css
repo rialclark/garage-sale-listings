@@ -261,3 +261,35 @@ details p{color:var(--muted);margin:0 0 20px}
   .brand span{overflow:hidden;text-overflow:ellipsis}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Waitlist modal */
+.waitlist-hint{display:flex;gap:8px;align-items:flex-start;justify-content:center;margin:12px 0 0;font-size:.9rem;color:var(--muted);text-align:left}
+.waitlist-hint .icon{width:16px;height:16px;margin-top:3px;color:var(--accent)}
+.waitlist-hint.light{color:#c9d9e3;justify-content:center;text-align:center;margin-top:10px;font-size:.85rem}
+.guide-cta{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.modal{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;color:var(--ink)}
+.modal:not([open]){display:none}
+.modal[open]{display:flex;align-items:center;justify-content:center;padding:24px}
+.modal::backdrop{background:rgba(9,28,40,.62);backdrop-filter:blur(3px)}
+.modal.fallback{position:fixed;inset:0;z-index:100;background:rgba(9,28,40,.62)}
+.modal-inner{position:relative;width:100%;max-width:560px;max-height:calc(100vh - 48px);overflow:auto;background:#fff;border-radius:var(--r-lg);padding:34px;box-shadow:var(--shadow-lg);animation:modal-in .22s ease-out}
+@keyframes modal-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer}
+.modal-close:hover{background:var(--ice)}
+.modal-close:focus-visible,.modal .btn:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+.modal-head{display:flex;gap:16px;align-items:center;padding-right:44px;margin-bottom:10px}
+.modal-head .eyebrow{margin-bottom:.2em}
+.modal-head h2{font-size:1.6rem;margin:0}
+.modal-desc{color:var(--muted);margin:0 0 22px}
+.opt{font-weight:400;color:var(--muted)}
+.wl-done{text-align:center;padding:12px 0 4px}
+.wl-done .tile{margin:0 auto 14px;width:56px;height:56px;border-radius:50%}
+.wl-done-msg{font-family:"Baloo 2",sans-serif;font-size:1.35rem;color:var(--navy);font-weight:700;line-height:1.3;margin-bottom:20px}
+html.modal-open{overflow:hidden}
+@media (max-width:720px){
+  .modal[open]{align-items:flex-end;padding:0}
+  .modal-inner{max-width:none;max-height:92vh;border-radius:24px 24px 0 0;padding:26px 20px 28px;animation:sheet-in .25s ease-out}
+  @keyframes sheet-in{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+  .modal-head h2{font-size:1.35rem}
+}
+@media (prefers-reduced-motion:reduce){.modal-inner{animation:none}}

@@ -239,7 +239,7 @@
         </div>
         <div class="guide-cta">
           <button type="button" class="btn btn-light" data-open="guide-modal" aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the free guide</button>
-          <p class="waitlist-hint light">Free PDF. Download it right after you enter your email.</p>
+          <p class="waitlist-hint light">Free PDF. Download it right after you fill in the short form.</p>
         </div>
       </div>
     </div>
@@ -507,13 +507,14 @@
         <h2 id="gd-title">Get the free guide</h2>
       </div>
     </div>
-    <p id="gd-desc" class="modal-desc">Be the Agent They Already Know: 10 Organic Ways to Win Listings in Your Prospect Area, Ranked. Enter your name and email and the PDF is yours right away.</p>
+    <p id="gd-desc" class="modal-desc">Be the Agent They Already Know: 10 Organic Ways to Win Listings in Your Prospect Area, Ranked. Enter your name, email, city and state and the PDF is yours right away.</p>
     <form id="guide-form" class="js-modal-form" action="https://formsubmit.co/hello@deklutternow.com" data-ajax="https://formsubmit.co/ajax/hello@deklutternow.com" method="POST" novalidate>
       <input type="hidden" name="_subject" value="Free guide request (garagesaleagents.com)">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_source" value="garagesaleagents.com">
       <input type="hidden" name="product" value="Free guide">
+      <input type="hidden" name="_next" value="https://garagesaleagents.com/guide/thanks.html">
       <input type="hidden" name="_autoresponse" value="Thanks for grabbing the guide. Here it is: https://garagesaleagents.com/guide/be_the_agent_they_already_know.pdf Tactic 1 is the community garage sale. If it clicks, reply here and we'll let you know when the full kit is ready. Clark Richardson, (602) 767-0428">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="row">
@@ -538,10 +539,10 @@
       </div>
       <div class="row">
         <label>City
-          <input type="text" name="city" autocomplete="address-level2">
+          <input type="text" name="city" required autocomplete="address-level2">
         </label>
         <label>State
-          <input type="text" name="state" autocomplete="address-level1">
+          <input type="text" name="state" required autocomplete="address-level1">
         </label>
       </div>
       <button class="btn btn-primary btn-block" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Get the guide</button>
@@ -613,7 +614,7 @@
       e.preventDefault();
       if (!form.checkValidity()) {
         status.className = 'form-status err';
-        status.textContent = 'Please add your name and a valid email.';
+        status.textContent = (form.id === 'guide-form' ? 'Please add your name, a valid email, your city and your state.' : 'Please add your name and a valid email.');
         var bad = form.querySelector(':invalid'); if (bad) bad.focus();
         return;
       }
@@ -634,10 +635,15 @@
         return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
       }).then(function (res) {
         var s = res.j && res.j.success;
-        if (res.ok && (s === true || s === 'true')) { showDone(); } else { throw new Error('failed'); }
+        if (res.ok && (s === true || s === 'true')) {
+          if (form.id === 'guide-form') { location.href = 'guide/thanks.html'; return; }
+          showDone();
+        } else { throw new Error('failed'); }
       }).catch(function () {
         status.className = 'form-status err';
-        status.textContent = FAIL;
+        if (form.id === 'guide-form') {
+          status.innerHTML = 'We could not save your details, but the guide is still yours: <a href="guide/be_the_agent_they_already_know.pdf" download>download the PDF</a>. Questions? Call or text (602) 767-0428.';
+        } else { status.textContent = FAIL; }
       }).then(function () { button.disabled = false; button.innerHTML = label; });
     });
   });

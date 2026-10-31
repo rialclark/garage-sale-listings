@@ -295,3 +295,12 @@ html.modal-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.modal-inner{animation:none}}
 .done-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .wl-done .small{max-width:380px;margin:0 auto}
+
+/* Mobile call and text bar */
+.callbar{display:none}
+@media (max-width:720px){
+  .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#173a4f;box-shadow:0 -2px 10px rgba(0,0,0,.2);padding-bottom:env(safe-area-inset-bottom)}
+  .callbar a{flex:1;text-align:center;color:#fff;font-weight:700;text-decoration:none;padding:14px 8px;font-size:16px}
+  .callbar a+a{border-left:1px solid rgba(255,255,255,.25)}
+  body{padding-bottom:56px}
+}

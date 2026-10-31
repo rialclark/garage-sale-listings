@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Garage Sale Listings | Run one community garage sale, meet every future seller on the street</title>
-<meta name="description" content="A complete community garage sale playbook for real estate agents anywhere in the US, and done for you neighborhood sales for HOAs across the country.">
+<title>Community Garage Sale Kit for Real Estate Agents</title>
+<meta name="description" content="A community garage sale kit for real estate agents: the timeline, signup form, map, flyers, signs and follow up scripts to meet every seller on the street.">
 <meta name="theme-color" content="#173a4f">
 <link rel="preload" href="fonts/baloo2.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/nunitosans.woff2" as="font" type="font/woff2" crossorigin>
@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://garagesaleagents.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Garage Sale Listings">
-<meta property="og:title" content="Run One Garage Sale. Meet Every Future Seller on the Street.">
+<meta property="og:title" content="Community Garage Sale Kit for Real Estate Agents">
 <meta property="og:description" content="The community garage sale playbook for real estate agents who want to be known in the neighborhoods they work.">
 <meta property="og:url" content="https://garagesaleagents.com/">
 <meta property="og:image" content="https://garagesaleagents.com/assets/og.png">
@@ -165,8 +165,8 @@
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow">Community garage sales, planned start to finish</p>
-        <h1>Run One Garage Sale. Meet Every Future Seller on the Street.</h1>
-        <p class="lede">One Saturday, a whole neighborhood selling at once, and a real reason to meet the people who live there. Pick the path that fits you.</p>
+        <h1>Run One Community Garage Sale. Meet Every Future Seller on the Street.</h1>
+        <p class="lede">Our community garage sale kit for real estate agents gives you one Saturday, a whole neighborhood selling at once, and a real reason to meet the people who live there. Pick the path that fits you.</p>
       </div>
 
       <div class="hero-card">
@@ -679,6 +679,37 @@
       status.textContent = FAIL;
     }).then(function () { button.disabled = false; button.innerHTML = label; });
   });
+})();
+</script>
+<nav class="callbar" aria-label="Call or text us">
+  <a href="tel:+16027670428" data-track="call_tap">Call (602) 767-0428</a>
+  <a href="sms:+16027670428" data-track="text_tap">Text us</a>
+</nav>
+<script>
+/* GA4 hook: stays off until an ID is set below, for example "G-XXXXXXX". */
+window.GA4_ID = "";
+(function(){
+  var id = window.GA4_ID;
+  function track(name, params){ if (window.gtag) window.gtag("event", name, params || {}); }
+  window.siteTrack = track;
+  if (id) {
+    var s = document.createElement("script"); s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + id; document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag("js", new Date()); gtag("config", id);
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest("a"); if (!a) return;
+    var h = a.getAttribute("href") || "";
+    if (h.indexOf("tel:") === 0) track("call_tap", {link_url: h});
+    else if (h.indexOf("sms:") === 0) track("text_tap", {link_url: h});
+    else if (h.indexOf("mailto:") === 0) track("email_tap", {link_url: h});
+    else if (a.classList.contains("btn")) track("cta_tap", {link_text: (a.textContent || "").trim().slice(0, 60)});
+  }, true);
+  document.addEventListener("submit", function(e){
+    track("form_submit", {form_id: e.target.id || "form"});
+  }, true);
 })();
 </script>
 </body>

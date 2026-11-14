@@ -260,6 +260,23 @@ details p{color:var(--muted);margin:0 0 20px}
   .brand{min-width:0}
   .brand span{overflow:hidden;text-overflow:ellipsis}
 }
+/* Facts block: plain text an answer engine can quote */
+.facts-band{padding:48px 0 8px}
+.facts{background:var(--ice);border:1px solid var(--line);border-radius:var(--r);padding:36px 40px;box-shadow:var(--shadow-sm)}
+.facts .eyebrow{margin-bottom:.45em}
+.facts h2{font-size:1.45rem;margin:0 0 8px}
+.facts dl{margin:16px 0 0}
+.facts .fact{display:grid;grid-template-columns:minmax(140px,200px) 1fr;gap:8px 28px;padding:14px 0;border-top:1px solid var(--line)}
+.facts .fact:first-of-type{border-top:0;padding-top:4px}
+.facts dt{font-weight:800;color:var(--navy);margin:0}
+.facts dd{margin:0;color:var(--ink)}
+.faq-more{margin:28px 0 0;text-align:center}
+@media (max-width:700px){
+  .facts{padding:26px 20px}
+  .facts-band{padding:32px 0 0}
+  .facts .fact{grid-template-columns:1fr;gap:4px}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* Waitlist modal */

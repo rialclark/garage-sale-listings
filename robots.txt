@@ -21,6 +21,9 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+
 # AI training bots (allowed by default; switch to Disallow if you prefer)
 User-agent: GPTBot
 Allow: /
